@@ -16,11 +16,10 @@ class Graph(object):
         for j in range(len(self.x)):
             if j ==0:
                 nRho[j] = rho[j]
-                print(nRho[j])
             elif j==401:
                 nRho[j] = rho[j]
             else:
-                nRho[j] = ((self.v*self.dt)/self.dx)*(rho[j]-rho[j-1])+rho[j]
+                nRho[j] = ((self.v*self.dt)/self.dx)*(rho[j-1]-rho[j])+rho[j]
         return nRho
 
 
@@ -45,6 +44,7 @@ for i in range(2,1501):
 #print(rho)
 plt.plot(A.x,rho)
 plt.plot(A.x,B[500],'g')
-#plt.plot(A.x,B[1000],'r')
+plt.plot(A.x,B[1000],'r')
 plt.plot(A.x,B[1500],'y')
+plt.savefig('plot.png')
 plt.show()
